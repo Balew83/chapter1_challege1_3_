@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn Gestalt psychology through visual lessons, interactive comparisons, a quiz, and a practical design checklist.">
+  <meta name="theme-color" content="#f4f6fb">
+  <title>Gestalt Psychology Interactive Learning Lab</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="#home"><span class="brand-icon" aria-hidden="true">G</span><span>Gestalt <b>Learning Lab</b></span></a>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#principles">Learn Principles</a>
+      <a href="#lab">Interactive Lab</a>
+      <a href="#compare">Compare Designs</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#checklist">Design Checklist</a>
+      <a href="#about">About</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◐</span><span id="theme-label">Dark mode</span></button>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Psychology · HCI · UI/UX</p>
+        <h1>Understand how people <span>see the whole.</span></h1>
+        <p>Gestalt psychology explains how our minds organize visual details into meaningful patterns. Explore its principles and see how they shape the way we read websites and apps.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#principles">Explore principles <span aria-hidden="true">→</span></a><a class="button button-secondary" href="#lab">Open interactive lab</a></div>
+        <p class="hero-footnote">10 principles <span>·</span> Interactive visual tests <span>·</span> Built for curious minds</p>
+      </div>
+      <div class="hero-visual" aria-label="Dots organized into three groups">
+        <span class="hero-note note-one">individual pieces</span>
+        <svg viewBox="0 0 430 280" role="img" aria-label="Twelve dots appear as three close groups">
+          <circle cx="70" cy="82" r="8"/><circle cx="95" cy="82" r="8"/><circle cx="70" cy="107" r="8"/><circle cx="95" cy="107" r="8"/>
+          <circle cx="185" cy="82" r="8"/><circle cx="210" cy="82" r="8"/><circle cx="185" cy="107" r="8"/><circle cx="210" cy="107" r="8"/>
+          <circle cx="300" cy="82" r="8"/><circle cx="325" cy="82" r="8"/><circle cx="300" cy="107" r="8"/><circle cx="325" cy="107" r="8"/>
+          <path d="M92 165 C145 210 250 210 305 165" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 7"/>
+          <text x="200" y="238" text-anchor="middle">meaningful patterns</text>
+        </svg>
+      </div>
+    </section>
+
+    <section id="principles" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">01 / Learn</p><h2>Principles that shape perception</h2></div><p>Explore seven foundational principles, followed by three advanced ideas. Every card links to a visual test.</p></div>
+      <div id="principle-list" class="cards"></div>
+      <div class="advanced-heading"><span>Advanced principles</span><i></i><span>Beyond the foundations</span></div>
+      <div id="advanced-list" class="cards advanced-cards"></div>
+    </section>
+
+    <section id="lab" class="section-block alternate">
+      <div class="section-wrap">
+        <div class="section-heading"><div><p class="eyebrow">02 / Experiment</p><h2>Interactive comparison lab</h2></div><p>Choose a principle and compare the same basic information arranged in different ways.</p></div>
+        <div class="lab-toolbar">
+          <label for="principle-choice">Select a principle</label>
+          <select id="principle-choice"></select>
+          <div class="controls" role="group" aria-label="Demonstration mode">
+            <button type="button" data-mode="with" class="mode-button">WITH Principle</button>
+            <button type="button" data-mode="without" class="mode-button">WITHOUT Principle</button>
+            <button type="button" data-mode="compare" class="mode-button">Compare Both</button>
+          </div>
+          <button id="reset-lab" class="button-reset" type="button">Reset</button>
+        </div>
+        <p id="lab-status" class="status" aria-live="polite"></p>
+        <div id="examples" class="comparison"></div>
+        <div id="explanation" class="explanation"></div>
+      </div>
+    </section>
+
+    <section id="compare" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">03 / Compare</p><h2>Same content. Different grouping.</h2></div><p>Study both visual versions side by side. This section covers all seven main principles.</p></div>
+      <div class="compare-toolbar"><label for="compare-choice">Choose a principle</label><select id="compare-choice"></select></div>
+      <div id="compare-examples" class="comparison"></div>
+      <div id="compare-explanation" class="compare-notes"></div>
+    </section>
+
+    <section id="quiz" class="section-block alternate">
+      <div class="section-wrap">
+        <div class="section-heading"><div><p class="eyebrow">04 / Practice</p><h2>Test your understanding</h2></div><p>Ten questions, shuffled each round. Every core principle is represented.</p></div>
+        <div class="quiz-layout">
+          <div class="quiz-box">
+            <div class="quiz-meta"><p id="question-number">Ready to start</p><span id="quiz-progress">10 questions</span></div>
+            <div id="quiz-content"></div>
+          </div>
+          <aside class="score-box">
+            <p class="eyebrow">Your progress</p><h3>Learning score</h3>
+            <p class="score-number" id="score-percentage">0%</p>
+            <div class="score-track" role="progressbar" aria-label="Quiz percentage score" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="score-fill"></span></div>
+            <dl class="score-stats"><div><dt>Answered</dt><dd id="score-answered">0</dd></div><div><dt>Correct</dt><dd id="score-correct">0</dd></div><div><dt>Incorrect</dt><dd id="score-incorrect">0</dd></div></dl>
+            <p id="recommendation" class="recommendation">Answer a question for a learning recommendation.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="checklist" class="section-wrap section-block">
+      <div class="section-heading"><div><p class="eyebrow">05 / Apply</p><h2>Design quality checklist</h2></div><p>Review a design one visual relationship at a time. Your result is a learning aid, not a scientifically validated psychological measurement.</p></div>
+      <form id="checklist-form" class="checklist"></form>
+      <div class="checklist-actions"><button id="checklist-reset" class="button-reset" type="button">Clear answers</button></div>
+      <div id="checklist-result" class="checklist-result" aria-live="polite"><strong>Ready when you are</strong><p>Choose Yes, No, or Not Sure for each item to see a reflection.</p></div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="section-wrap about-layout"><div><p class="eyebrow">06 / About</p><h2>Perception is an active process.</h2></div><div><p>Gestalt psychology describes common ways people organize visual information into patterns and meaningful wholes. These principles can help designers communicate relationships and hierarchy, but they are not rigid rules about how every person must see a design.</p><p>Use the examples in this lab as a starting point: change one visual relationship, compare, and notice what becomes easier or harder to perceive.</p></div></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#home"><span class="brand-icon" aria-hidden="true">G</span><span>Gestalt <b>Learning Lab</b></span></a><span>Learn by looking. Understand by comparing.</span><a href="#home">Back to top ↑</a></footer>
+</body>
+</html>
